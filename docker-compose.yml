@@ -1,0 +1,16 @@
+services:
+  runner:
+    platform: linux/amd64
+    restart: always
+    scale: 2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: gh_runner
+    environment:
+      GH_ORG: beepsdev
+      GH_TOKEN: <PAT>
+      GH_NAME: "runnerA"
+    deploy:
+      mode: replicated
+      replicas: 6
